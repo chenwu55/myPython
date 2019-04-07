@@ -1,8 +1,8 @@
 # coding=utf-8
 from selenium import webdriver
 def browser():
-    dr=webdriver.Chrome()
-    # dr=webdriver.Firefox()
+    # dr=webdriver.Chrome()
+    dr=webdriver.Firefox()
     # dr=webdriver.Ie()
     # dr.get("http://assptest.oppein.com")
     return dr

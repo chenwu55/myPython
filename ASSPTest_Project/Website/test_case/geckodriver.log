@@ -1,21 +1,35 @@
-1528769414816	geckodriver	INFO	Listening on 127.0.0.1:17549
-1528769416829	mozprofile::profile	INFO	Using profile path C:\Users\yxtest\AppData\Local\Temp\rust_mozprofile.aAke3s49herM
-1528769416836	geckodriver::marionette	INFO	Starting browser E:\Mozilla Firefox\firefox.exe
-1528769416853	geckodriver::marionette	INFO	Connecting to Marionette on localhost:17555
-1528769420125	Marionette	INFO	Listening on port 17555
-Unable to read VR Path Registry from C:\Users\yxtest\AppData\Local\openvr\openvrpaths.vrpath
-[Parent 8584, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
-Unable to read VR Path Registry from C:\Users\yxtest\AppData\Local\openvr\openvrpaths.vrpath
-[Child 6212, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
-[Parent 8584, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
-Unable to read VR Path Registry from C:\Users\yxtest\AppData\Local\openvr\openvrpaths.vrpath
-[Child 7724, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
-[Child 7724, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
-*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
-JavaScript error: jar:file:///E:/Mozilla%20Firefox/omni.ja!/components/nsUrlClassifierListManager.js, line 321: NS_ERROR_NOT_INITIALIZED: Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIUrlClassifierDBService.getTables]
-JavaScript error: jar:file:///E:/Mozilla%20Firefox/omni.ja!/components/nsUrlClassifierListManager.js, line 321: NS_ERROR_NOT_INITIALIZED: Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIUrlClassifierDBService.getTables]
-Unable to read VR Path Registry from C:\Users\yxtest\AppData\Local\openvr\openvrpaths.vrpath
-[GPU 8116, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1554472689715	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rust_mozprofile.tAP6Nmu8hKT2"
+1554472690389	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1554472690389	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1554472690389	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1554472691679	Marionette	INFO	Listening on port 59980
+1554472691900	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:190:13
 
-###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+JavaScript error: http://opssotest.oppein.com/sso/login?service=http://mtdsuat.oppein.com//sso, line 229: InvalidAccessError: A parameter or an operation is not supported by the underlying object
+JavaScript error: http://opssotest.oppein.com/sso/login?service=http://mtdsuat.oppein.com//sso, line 229: InvalidAccessError: A parameter or an operation is not supported by the underlying object
+JavaScript error: http://opssotest.oppein.com/sso/login?service=http://mtdsuat.oppein.com//sso, line 229: InvalidAccessError: A parameter or an operation is not supported by the underlying object
+JavaScript error: http://opssotest.oppein.com/sso/login?service=http://mtdsuat.oppein.com//sso, line 229: InvalidAccessError: A parameter or an operation is not supported by the underlying object
+JavaScript error: http://opssotest.oppein.com/sso/login?service=http://mtdsuat.oppein.com//sso, line 229: InvalidAccessError: A parameter or an operation is not supported by the underlying object
+1554472956717	Marionette	INFO	Stopped listening on port 59980
+[Child 3420, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 332
+[Child 3420, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 3[Parent 5404, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 332
+[Child 1328, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 332
+[Child 1328, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 332
+/ipc_channel_win.cc, line 332
+[Child 10360, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 332
+1554472635709	Marionette	INFO	Stopped listening on port 59761
+! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
 
+[Child 10156, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 332
+[Child 10156, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 332
+[Parent 2996, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 332
+[Child 8876, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 332
+[Child 8876, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 332
+1554471303766	Marionette	INFO	Stopped listening on port 55067

@@ -5,9 +5,9 @@ import random,time
 import os
 #######################################################        发起点将         #########################################
 class dainjianshenqing(Page):
-    url = '/'
-    def dianjiang_tou(self,Designer,leixing,xingzhi):
-        self.by_xpath('//*[@id="menuTree"]/ul/li[4]/div ')
+    url = ' '
+    def dianjiang_tou(self,decoration_type,storefront_type):
+        self.by_css('img[alt="展示设计"]~span')
         sleep(1)
         self.by_xpath('(//*[contains(text(),"我要点将")])[2]')
         sleep(1)
@@ -17,7 +17,7 @@ class dainjianshenqing(Page):
         sleep(1)
         self.by_xpath('(//button[@class="el-button el-button--primary el-button--small"])[4]')
         sleep(2)
-        self.by_css_s('input[placeholder="设计师或独立工作室名称"]',Designer)
+        self.by_css_s('input[placeholder="设计师或独立工作室名称"]',u'陈冲')
         sleep(2)
         self.by_css("button[class='el-button el-button--default el-button--small']")
         sleep(1)
@@ -32,152 +32,70 @@ class dainjianshenqing(Page):
         sleep(1)
         self.by_css('input[placeholder="请选择装修类型"]')
         sleep(1)
-        self.by_xpath("/html/body/div[4]/div/div[1]/ul/li[" + leixing + "]")
+        self.by_xpath('(//*[@style="position: relative;"])[3]/li[' +decoration_type + ']') #装修类型
         self.by_css('input[placeholder="请选择店面类型"]')
-        sleep(1)
-        self.by_xpath("/html/body/div[5]/div/div[1]/ul/li[" + xingzhi + "]")
+        sleep(2)
+        self.by_xpath('(//*[@style="position: relative;"])[3]/li[' +storefront_type + ']') #店面类型
         sleep(1)
         self.by_css('input[placeholder="请选择店面"]')
         sleep(1)
-        self.by_xpath('//*[text()="二锅头"]')
-    def dianjiang_fjb(self,a,b,c,d,e):
+        self.by_xpath('(//*[@style="position: relative;"])[3]/li[1]')
+    def dianjiang_fjb(self,proportion):
         self.by_xpath_y("6")
-        self.by_xpath_s("(//input[@type='text'])[6]", e)
-        self.by_xpath_y("7")
-        self.by_xpath_s("(//input[@type='text'])[7]", b)
+        self.by_xpath_z("6",proportion)
         self.by_xpath_y("8")
-        self.by_xpath_s("(//input[@type='text'])[8]", c)
-        self.by_xpath_y("9")
-        self.by_xpath_s("(//input[@type='text'])[9]", d)
-        self.by_xpath_y("10")
-        self.by_xpath_s("(//input[@type='text'])[10]", a)
-        self.by_xpath_y("11")
-        self.by_xpath_s("(//input[@type='text'])[11]", "3")
+        self.by_xpath_z("8",200)
         self.by_css('button[class="el-button el-button--primary"]')
     def dianjiang_jb(self):
-        # self.by_xpath('//*[text()="申请提交"]')
-        # self.by_xpath('//*[text()="更换"]')
-        # sleep(2)
-        # self.by_css('[placeholder="设计师或独立工作室名称"]')
-        # sleep(2)
-        # self.by_clear_css('[placeholder="设计师或独立工作室名称"]').clear()
-        # sleep(2)
-        # self.by_css_s('input[placeholder="设计师或独立工作室名称"]', u'杨朝允')
-        # self.by_css("button[class='el-button el-button--default el-button--small']")
-        # self.by_css('button[item-index="0"]')
-        self.by_xpath_y("6")
-        self.by_xpath_s("(//input[@type='text'])[6]",'8')
-        self.by_xpath_y("7")
-        self.by_xpath_s("(//input[@type='text'])[7]",'8')
-        self.by_xpath_y("8")
-        self.by_xpath_s("(//input[@type='text'])[8]",'8')
-        self.by_xpath_y("9")
-        self.by_xpath_s("(//input[@type='text'])[9]",'8')
-        self.by_xpath_y("10")
-        self.by_xpath_s("(//input[@type='text'])[10]",'88')
-        self.by_xpath_y("11")
-        self.by_xpath_s("(//input[@type='text'])[11]",'8')
-        self.by_xpath_y("12")
-        self.by_xpath_s("(//input[@type='text'])[12]",'8')
-        self.by_xpath_y("13")
-        self.by_xpath_s("(//input[@type='text'])[13]",'8')
-        self.by_xpath_y("14")
-        self.by_xpath_s("(//input[@type='text'])[14]",'8')
+        j = range(23,32)
+        for i in j:
+            i=bytes(i)
+            self.by_xpath_y(i)
+            x = random.randrange(1, 20, 2)
+            self.by_xpath_z(i, x)
         self.by_css('button[class="el-button el-button--primary"]')
         sleep(2)
-    def shifouyichang(self):
-        try:
+    def shifouyichang(self,type1):
+        if type1=="1":
             sleep(4)
             self.by_xpath('//*[text()="搜索"]')
-            zhuangtai=1
-            print u"正常点将"
-        except:
+        elif type1 =="2":
             self.by_css('button[class="el-button el-button--default el-button--primary "]')
             self.by_css_s('textarea[placeholder="请填写至少15字申请原因。"]', u'有钱任性，点的就是你，有钱任性，点的就是你，有钱任性，点的就是你')
             self.by_css('[class="el-button el-button--primary"]')
+            sleep(3)
             self.by_css('button[class="el-button el-button--primary el-button--small"]')
-            zhuangtai = 2
-            print u"异常点将"
         sleep(5)
         text=self.dr.find_element_by_xpath("//div[@class='cell']/a")
         changliang =text.text
-        # now =  u"测试活动："+changliang+u"  时间："+time.strftime("%Y-%m-%d %H_%M_%S")
-        # jietu_name = now +  u"点将申请截图.png"
-        # function.insert_img(self.dr, jietu_name)
         self.by_css("a[href='javascript:void(0)']")
         print u"活动编号：", changliang
-        # str=[changliang,zhuangtai]
         return  changliang
 
-    def dianjiang(self,shenheren):
-        a = random.randint(99, 299)
-        b = random.randint(99, 299)
-        c = random.randint(99, 299)
-        d = random.randint(99, 299)
-        e = a + b + c + d
-        print  u'总面积：',e,'cm'   u"橱柜面积:",a,'cm'   u'衣柜面积:',b,'cm'    u'电器面积:',c,'cm'   u'木门面积:',d,'cm'
-        Designer=u'陈冲'
-        leixing =str(random.randint(2,5))   #装修类型leixing( 2= 新开店面,3=老店扩大,4=全新装修,5=局部整改)'''
-        xingzhi =str(random.randint(2,6))   #门店类型xingzhi( 2=标准店，3=综合店，4=微店，5=家装整装店，6=网销店）'''
-        if leixing==2:
-            print u'装修类型:新开店面'
-        elif leixing==3:
-            print u'装修类型:老店扩大'
-        elif leixing==4:
-            print u'装修类型:全新装修'
-        else:
-            print u'装修类型:局部整改'
-        if  xingzhi==2:
-            print u'门店类型:标准店'
-        elif xingzhi==3:
-            print u'门店类型:综合店'
-        elif xingzhi==4:
-            print u'门店类型:微店'
-        elif xingzhi==5:
-            print u'门店类型:家装整装店'
-        else :
-            print u'门店类型:网销店'
+    def dianjiang(self,shenheren,password,decoration_type,storefront_type,proportion,type1):
+        # 根据装修类型、店面类型、点将面积判断点将是否异常
         po = LoginPage(self.dr)
-        po.Login_action(shenheren,"111111")
+        po.Login_action(shenheren,password)
         sleep(1)
-        self.dianjiang_tou(Designer,leixing,xingzhi)
-        if leixing == "5" and xingzhi != "5":   ####局部整改非家装店
+        self.dianjiang_tou(decoration_type,storefront_type)
+        if decoration_type == "5":
             self.dianjiang_jb()
-            print u"局部整改家装店不走满意度与打分"
-        elif leixing == "5" and xingzhi == "5": ####局部整改家装店
-            self.dianjiang_fjb(a,b,c,d,e)
-            print u"局部整改家装店不走满意度与打分"
         else:
-            self.dianjiang_fjb(a,b,c,d,e)
-            print u"非局部整改"
-        changliang=self.shifouyichang()
-        return changliang
-    dianjiangPass_loc=(By.LINK_TEXT,u'退出登录')
-    dianjingFail_loc = (By.ID,'username')
+            self.dianjiang_fjb(proportion)
+        sleep(1)
+        dianjiangxx=self.shifouyichang(type1)
+        return dianjiangxx
+    dianjiangPass_loc=(By.ID,'btnSubmit')
+    dianjingFail_loc =(By.LINK_TEXT,u'退出登录')
 
     def dianjiangPass_hint(self):
-        return self.find_element(*self.dianjiangPass_loc).text
+        return self.find_element(*self.dianjiangPass_loc).get_attribute("value")
     def dianjingFail_hint(self):
         return self.find_element(*self.dianjingFail_loc).text
 
-    # def dianjiang_jb_jia(self,a,b,c,d,e):                 ####局部整改家装店
-    #     self.by_xpath_y("6")
-    #     self.by_xpath_s("(//input[@type='text'])[6]", e)
-    #     self.by_xpath_y("7")
-    #     self.by_xpath_s("(//input[@type='text'])[7]", b)
-    #     self.by_xpath_y("8")
-    #     self.by_xpath_s("(//input[@type='text'])[8]", c)
-    #     self.by_xpath_y("9")
-    #     self.by_xpath_s("(//input[@type='text'])[9]", d)
-    #     self.by_xpath_y("10")
-    #     self.by_xpath_s("(//input[@type='text'])[10]", a)
-    #     self.by_xpath_y("11")
-    #     self.by_xpath_s("(//input[@type='text'])[11]", "10")
-    #     self.by_css('button[class="el-button el-button--primary"]')
-    #     print '局部整改不走打分流程'
 #######################################################        审   核           #########################################
 class Shenhe(Page):
-    url='/'
+    url=' '
 #######################################################        一般审核         #########################################
     def shenhe(self,shenheren,changliang,password):
         LoginPage(self.dr).Login_action(shenheren,password)
@@ -204,7 +122,7 @@ class Shenhe(Page):
         self.by_css("a[href='javascript:void(0)']")
 #######################################################        上传文件       ##########################################
 class Shangchuan(Page):
-    url='/'
+    url=' '
     def tijiao(self,shenheren, changliang,password):
         LoginPage(self.dr).Login_action(shenheren,password)
         Daiban(self.dr).daiban(changliang)
@@ -218,7 +136,7 @@ class Shangchuan(Page):
         self.by_css("a[href='javascript:void(0)']")
 #######################################################       平面图审图表     ##########################################
 class Tianxiest(Page):
-    url='/'
+    url=' '
     def shentubiao (self,shenheren,changliang,password):
         LoginPage(self.dr).Login_action(shenheren,password)
         Daiban(self.dr).daiban(changliang)
@@ -238,7 +156,7 @@ class Tianxiest(Page):
         self.by_css("a[href='javascript:void(0)']")
 #######################################################        下样日期确认    ##########################################
 class Xiayang(Page):
-    url='/'
+    url=' '
     def yangbanriqi(self,shenheren,changliang,pasword):
         LoginPage(self.dr).Login_action(shenheren,pasword)
         sleep(1)

@@ -2,27 +2,32 @@
 from time import sleep
 from selenium.webdriver.common.keys import Keys
 import os
+import time
+from selenium import webdriver
 class Page():
-    def __init__(self,dr,base_url='http://ucenterver.oppein.com'):
+    def __init__(self,dr):
         self.dr=dr
-        # self.base_url='https://assptest.oppein.com'
-        # self.base_url='http://ucenteruat.oppein.com'
-        self.base_url=base_url
+        self.base_url='https://assptest.oppein.com'
+        # self.base_url='http://mtdsuat.oppein.com'
+        # self.base_url='http://mtdsver.oppein.com'
+        # self.base_url='http://ucenterUAT.oppein.com'
         self.timeout=10
 
     def _open(self,url):
         url_=self.base_url+url
-        # print u"当前测试页面 %s" %url_
+        # print u"当前测试页面: %s" %url_
         self.dr.maximize_window()
         self.dr.get(url_)
         # assert self.dr.current_url == url_, u'登录失败 %s' % url_
 
     def open(self):
-        self._open(self.url)   ###打开网址浏览器
+        self._open(self.url)   ###打开网址
 
 
     def find_element(self,*loc):
         return self.dr.find_element(*loc)
+
+
 
     def link_text(self,text):
         return self.dr.find_element_by_link_text(text).click()
@@ -53,7 +58,6 @@ class Page():
 
     def by_clear_i(self,id):
         return self.dr.find_element_by_id(id).clear()
-
     def by_clear_x(self,xp):
         return self.dr.find_element_by_xpath(xp).clear()
 

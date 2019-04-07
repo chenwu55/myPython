@@ -4,8 +4,11 @@ from model import myunit
 from page_object.Cgdianjiang import *
 import time
 from page_object.Basepage import *
-changliang="ZSDJ-2018-003721"
+
+
+changliang="ZSDJ-2018-003718"
 class CgdianjiangTest(myunit.StartEnd):
+
 #商场管理员审核    OP.14556	齐慧敏	经销部管理员
     # @unittest.skip('skip this case')
     def test_shenhe_1(self):

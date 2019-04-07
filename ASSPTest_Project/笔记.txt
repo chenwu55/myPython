@@ -1,0 +1,80 @@
+
+frame标签有frameset、fr ame、iframe三种，
+frameset跟其他普通标签没有区别，不会影响到正常的定位，而frame与iframe对selenium定位而言是一样的，
+selenium有一组方法对frame进行操作
+
+self.dr.switch_to.parent_frame()     #回到上一级
+self.dr.switch_to.frame('content')   # 跳到'content'某层表单
+self.dr.switch_to.default_content()  # 跳到最外层表单
+
+driver.switch_to.frame('frame1.0.frame3')据说这个代码可以切到 “frame1” 下的 “第一个frame” 下的 “frame3” 中。
+
+鼠标双击事件
+from selenium.webdriver.common.action_chains import ActionChains
+ActionChains(self.dr).double_click(self.dr.find_element_by_xpath('//*[@id="page-wrapper"]/div[1]/nav/div/a[2]')).perform()
+
+下拉一段滚动条
+js = "window.scrollTo(100,450)"
+self.dr.execute_script(js)
+
+取值value
+fuh=self.dr.find_element_by_xpath('//*[@id="serviceNo"]').get_attribute("value")
+
+
+下拉框
+Select(self.dr.find_element_by_id("customerSource")).select_by_visible_text(u"")
+Select(driver.find_element_by_name('cars')).select_by_visible_text('Mercedes')
+上传文件
+self.dr.find_element_by_id("uploadAttachmentJsonFile").send_keys("F:\\0.0.jpg")
+
+
+干掉时间控件的只读
+import datetime
+today = datetime.date.today()
+mt = str(today + datetime.timedelta(days=1))  #days=1为明天
+
+js = "$('input[id=expectDeliveryDt]').removeAttr('readonly')"
+self.dr.execute_script(js)
+self.by_ids("expectDeliveryDt",mt)
+
+
+断言获取CSS的值进行断言
+try:
+  Css = driv.find_element_by_css_selector(".dropdown-toggle")
+  driv.get("http://192.168.99.203:8080/pss/attendance/topics/createAttenance")
+except:
+  print ("is not ")
+
+
+
+import  requests
+import json
+
+url = "http://127.0.0.1:8000/api/get_event_list/"
+
+params={'eid':'1'}
+r = requests.get(url, params=params)
+result= r.json()
+print result
+print json.dumps(result, encoding="UTF-8", ensure_ascii=False)
+print result['status']
+print result['message']
+print result['data']['name']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

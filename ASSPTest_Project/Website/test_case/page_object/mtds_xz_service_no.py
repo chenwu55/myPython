@@ -11,9 +11,9 @@ class xz_service_no(Page):
         LoginPage(self.dr).Login_action_mtds("S000044",shenheren,"Aa111111")
     #根据服务单搜索任务
     def sousuo(self,fud):
-        self.by_xpath('//*[text()="任务列表"]')
+        self.by_css('[title="任务列表"]')
         sleep(1)
-        self.by_xpath('//*[text()="我的任务"]')
+        self.by_xpath('//ul[@class="nav nav-second-level collapse in"]/li[2]//a')
         sleep(1)
         xf=self.dr.find_element_by_xpath('(//*[@frameborder="0"])[2]')
         self.dr.switch_to.frame(xf)
@@ -37,32 +37,23 @@ class xz_service_no(Page):
         self.by_css('input[value="确定"]')
         sleep(1)
         self.by_css('input[value="确定"]')
-        sleep(2)
+        sleep(3)
     #新增服务号与服务单
-    def service_no(self,pl):
-        cc=u"AI小程序测试"+time.strftime("%m%d%H%M")
-        # dh="155"+str(random.randint(10000000,99999999))
-        dh="13662646811"
-        self.by_xpath('//*[text()="客户列表"]')
+    def service_no(self,pl,fpsjs):
+        cc=u"MTDS流程测试"+time.strftime("%m%d%H%M")
+        dh="155"+str(random.randint(10000000,99999999))
+        # dh="13662646812"
+        self.by_css('[title="客户列表"]')
         sleep(1)
-        self.by_xpath('//*[text()="我的客户"]')
-        sleep(2)
-
-
-        self.dr.switch_to.frame('content')
-        self.by_xpath('//*[text()="客户列表"]')
+        self.by_css('ul[class="nav nav-second-level collapse in"]>li>a')
         sleep(1)
-        self.by_xpath('//*[text()="我的客户"]')
-        sleep(1)
-
-
-        self.dr.switch_to.frame('iframe0')
-        sleep(1)
+        self.dr.switch_to.frame('iframe1')
+        sleep(1.5)
         self.by_xpath('//*[text()="新增服务号"]')
         sleep(1)
         self.dr.switch_to.default_content()
         self.dr.switch_to.frame('content')
-        sleep(1)
+        sleep(1.5)
         xf=self.dr.find_element_by_xpath('(//*[@frameborder="0"])[3]')
         self.dr.switch_to.frame(xf)
         sleep(1)
@@ -78,11 +69,12 @@ class xz_service_no(Page):
         elif pl=="3":
             self.by_css('input[value="brand_oppein|category_chugui"]')
             self.by_css('input[value="brand_oppein|category_yigui"]')
-        sleep(1)
+        sleep(3)
         js = "window.scrollTo(100,450)"
         self.dr.execute_script(js)
-        sleep(1)
-        Select(self.dr.find_element_by_id("customerSource")).select_by_visible_text(u"自然进店")
+        sleep(3)
+        khly=self.dr.find_element_by_id("customerSource")
+        Select(khly).first_selected_option(self)
         sleep(1)
         self.by_xpath('//*[text()="保存"]')
         fud = (self.dr.find_element_by_xpath('//*[@id="orderGrid"]/tbody/tr[2]/td[11]')).text
@@ -94,14 +86,14 @@ class xz_service_no(Page):
         sleep(2)
         xf=self.dr.find_element_by_xpath('//*[@frameborder="0"]')
         self.dr.switch_to.frame(xf)
-        sleep(2)
+        sleep(2.5)
         self.by_xpath('(//a[@href="javascript:void(0);"])[9]')
         sleep(0.5)
         self.by_xpath('//*[@id="_designerId"]')
         sleep(1)
-        self.by_xpath_s('.//*[@id="menuContent"]/div/input',u'小武设计')
+        self.by_xpath_s('.//*[@id="menuContent"]/div/input',fpsjs)
         sleep(1)
-        self.by_xpath('.//*[@title="小武设计" and @class="level3 curSelectedNode"]')
+        self.by_xpath('.//*[@id="menuContent"]//*[@title="小武设计"]')
         self.by_id('bookMeasureDt')
         sleep(1)
         self.dr.switch_to.parent_frame()
@@ -272,7 +264,7 @@ class xz_service_no(Page):
         sleep(1.5)
         self.by_xpath('//*[@id="attachment"]')
         sleep(1)
-        self.dr.find_element_by_id("xmlAttachmentFile").send_keys("D:\\00.xml")
+        self.dr.find_element_by_id("xmlAttachmentFile").send_keys("F:\\0.0.xml")
         sleep(1.5)
         self.by_xpath('//*[@id="tran"]')
         sleep(3)
@@ -298,7 +290,13 @@ class xz_service_no(Page):
         sleep(2)
     #衣柜—订单下单
     def yg_dingdanxiadan(self):
-        dd = u"测试商场传单" + time.strftime("%m%d%H%M")
+        # self.by_xpath("//*[text()='服务单详情']")
+        # sleep(2)
+        # htbh = self.dr.find_element_by_id('productionOrderContractNo').get_attribute("value")
+        # print u"合同编号" ,htbh
+        # self.by_xpath("//*[text()='订单下单节点']")
+        # sleep(1)
+        # dd = '测试传单功能'+time.strftime("%m%d%H%M")
         js = "window.scrollTo(100,450)"
         self.dr.execute_script(js)
         sleep(0.5)
@@ -308,15 +306,16 @@ class xz_service_no(Page):
         sleep(0.5)
         xf=self.dr.find_element_by_xpath('(//*[@frameborder="0"])[1]')
         self.dr.switch_to.frame(xf)
-        sleep(0.5)
-        self.by_xpath('//*[@id="submitForm"]/div/input[5]')
+        sleep(2)
+        self.by_xpath('//*[@id="submitForm"]/div/input[6]')
+
         sleep(0.5)
         self.dr.switch_to.parent_frame()
         sleep(0.5)
         self.by_css('input[class="ui_state_highlight"][value="保存"]')
-        sleep(1)
-        self.by_clear_x('//*[@id="productionOrderContractNo"]')
-        self.by_xpath_s('//*[@id="productionOrderContractNo"]',dd)
+        sleep(0.5)
+        # self.by_clear_x('//*[@id="productionOrderContractNo"]')
+        # self.by_xpath_s('//*[@id="productionOrderContractNo"]',dd)
         Select(self.dr.find_element_by_id("designSource")).select_by_visible_text("XML")
         self.by_xpath('.//*[@onclick="selectReceiver()"]')
         xf=self.dr.find_element_by_xpath('(//*[@frameborder="0"])')
@@ -373,6 +372,13 @@ class xz_service_no(Page):
     #合同下单任务
     def hetongxiadan(self):
         self.dr.find_element_by_id("uploadAttachmentJsonFile").send_keys("F:\\0.0.jpg")
+
+
+
+
+
+
+
 
 
 
